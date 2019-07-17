@@ -6,7 +6,7 @@
         <i class="iconfont icon-sousuo"></i>
       </span>
       <span class="header_login" slot="right">
-        <span class="header_login_text">登录|注册</span>
+        <span class="header_login_text">{{user._id ? (user.name ? user.name : (user.phone ? user.phone : "登录|注册")) : "登录|注册"}}</span>
       </span>
     </Header>
     <!--首页导航-->
@@ -71,7 +71,7 @@ export default {
     this.$store.dispatch('getShops')
   },
   computed: {
-    ...mapState(["address", "categories", "shops"]),
+    ...mapState(["address", "categories", "shops", "user"]),
     /*
       获取食品分类列表思路
       将食品类表分类设置成一个二维数组，外面的数组代表页数，里面的数组代表一页多少个

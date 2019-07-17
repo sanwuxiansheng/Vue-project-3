@@ -10,6 +10,11 @@ import Header from './components/Heard/index.vue'
 import store from './store'
 // 引入创建的全局公共组件
 import Star from './components/Star/index.vue'
+// 引入表单验证的js文件
+import './validate'
+// 引入并注册使用按钮
+import { Button } from 'mint-ui';
+Vue.component(Button.name, Button);
 // 注册全局公共组件
 Vue.component('Header', Header)
 Vue.component('Star', Star)
