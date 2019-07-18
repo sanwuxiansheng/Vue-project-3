@@ -98,6 +98,7 @@
 import { mapState } from "vuex";
 import { MessageBox } from "mint-ui";
   export default {
+    name: 'Profile',
     computed: {
       ...mapState(["user"])
     },

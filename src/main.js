@@ -10,6 +10,7 @@ import Header from './components/Heard/index.vue'
 import store from './store'
 // 引入创建的全局公共组件
 import Star from './components/Star/index.vue'
+import ShopHeard from './components/ShopHeard'
 // 引入表单验证的js文件
 import './validate'
 // 引入并注册使用按钮
@@ -18,6 +19,7 @@ Vue.component(Button.name, Button);
 // 注册全局公共组件
 Vue.component('Header', Header)
 Vue.component('Star', Star)
+Vue.component('ShopHeard', ShopHeard)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

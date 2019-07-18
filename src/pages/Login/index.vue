@@ -70,6 +70,7 @@
 import {RECEIVE_USER} from '../../store/mutation-types'
 import {reqPwdLogin, reqSmsLogin, reqSendCode} from '../../api'
   export default {
+    naem: 'Login',
     data () {
       return {
         loginWay: true, // 默认值为true手机号码的方式,false:用户名密码的方式

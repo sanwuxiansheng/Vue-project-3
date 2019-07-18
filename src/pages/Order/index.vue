@@ -11,7 +11,9 @@
   </div>
 </template>
 <script>
-  export default {}
+  export default {
+    name: 'Order'
+  }
 </script>
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 .order  //订单

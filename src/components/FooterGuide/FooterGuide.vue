@@ -28,6 +28,7 @@
 </template>
 <script>
 export default {
+  name:'FooterGuide',
   methods: {
     goTo (path) {
       this.$router.replace(path)

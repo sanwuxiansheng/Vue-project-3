@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
+  name: 'Star',
   props: {
     size: Number,
     score: Number

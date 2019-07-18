@@ -6,7 +6,7 @@
     </div>
     <div class="shop_container">
       <ul class="shop_list">
-        <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index">
+        <li class="shop_li border-1px" v-for="(shop, index) in shops" :key="index" @click="$router.push('/shop')">
           <a>
             <div class="shop_left">
               <img class="shop_img" :src="'https://fuss10.elemecdn.com' + shop.image_path" />
@@ -46,6 +46,7 @@
 //引入vuex
 import {mapState} from 'vuex'
 export default {
+  name: "ShopList",
   computed: {
   ...mapState(["shops"]),
   }
