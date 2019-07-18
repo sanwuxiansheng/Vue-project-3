@@ -7,7 +7,8 @@ import Login from '../pages/Login';
 import Shop from '../pages/Shop';
 import Goods from '../pages/Shop/Goods';
 import Info from '../pages/Shop/Info';
-import Ratings from '../pages/Shop/Ratings'
+import Ratings from '../pages/Shop/Ratings';
+import UserInfo from '../pages/UserInfo'
 // 向外暴露
 export default [
   {
@@ -63,6 +64,10 @@ export default [
         redirect: '/shop/goods'
       }
     ]
+  },
+  {
+    path: '/userInfo',
+    component: UserInfo
   },
   {
     path: '/',
