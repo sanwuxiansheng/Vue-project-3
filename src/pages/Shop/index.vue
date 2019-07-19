@@ -24,9 +24,9 @@ export default {
   components: {
     ShopHeard
   },
-  async mounted () {
-    const result = await reqInfo();
-    console.log(result);
+  mounted () {
+    // const result = await reqInfo();
+    // console.log(result);
     this.$store.dispatch('getInfo')
   }
 }
