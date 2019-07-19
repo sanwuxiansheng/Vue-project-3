@@ -21,7 +21,7 @@ export default {
     const result = await reqUser()
     if (result.code === 0) {
       const user = result.data
-      console.log(user);
+      // console.log(user);
       this.$store.commit(RECEIVE_USER, user)
     }
   }
