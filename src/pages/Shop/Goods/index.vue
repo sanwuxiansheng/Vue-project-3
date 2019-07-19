@@ -3,7 +3,7 @@
     <div class="goods">
       <div class="menu-wrapper">
         <ul>
-          <li class="menu-item current" v-for="(good, index) in goods" :key="index">
+          <li class="menu-item" v-for="(good, index) in goods" :key="index">
             <img class="icon" :src="good.icon" v-if="good.icon">
             <span class="text bottom-border-1px">{{good.name}}</span>
           </li>
@@ -42,24 +42,26 @@
 </template>
 <script>
 import {mapState} from 'vuex'
-  export default {
-    name: 'Goods',
-    computed: {
-      ...mapState({
-        goods: state => state.shop.goods
-      })
-    },
-    async mounted () {
-      await this.$store.dispatch("getGoods");
-      // console.log(this.goods);
-    }
+// 引入滚动的插件
+import BScroll from "better-scroll";
+export default {
+  name: 'Goods',
+  computed: {
+    ...mapState({
+      goods: state => state.shop.goods
+    })
+  },
+  async mounted () {
+    await this.$store.dispatch("getGoods");
+    // console.log(this.goods);
   }
+}
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import '../../../common/stylus/mixins.styl'
 .goods
   display flex
-  // position absolute
+  position absolute
   top 225px
   bottom 46px
   width 100%
