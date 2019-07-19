@@ -71,7 +71,13 @@ export default {
     this.$store.dispatch('getShops')
   },
   computed: {
-    ...mapState(["address", "categories", "shops", "user"]),
+    // ...mapState(["address", "categories", "shops", "user"]),
+    ...mapState({
+      address:state => state.msite.address,
+      categories: state => state.msite.categories,
+      shops: state => state.msite.shops,
+      user: state => state.user.user
+    }),
     /*
       获取食品分类列表思路
       将食品类表分类设置成一个二维数组，外面的数组代表页数，里面的数组代表一页多少个

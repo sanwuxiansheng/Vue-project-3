@@ -16,3 +16,8 @@ export const reqSendCode = (phone) => ajax(BASE + `/sendcode`, { phone })
 export const reqUser = () => ajax(BASE + `/userinfo`)
 // 用户退出登录
 export const reqLoginOut = () => ajax(BASE + `/logout`)
+
+// mock的相关的请求
+export const reqGoods = () => ajax('/goods')
+export const reqInfo = () => ajax('/info')
+export const reqRatings = () => ajax('/ratings')

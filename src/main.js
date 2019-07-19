@@ -13,6 +13,8 @@ import Star from './components/Star/index.vue'
 import ShopHeard from './components/ShopHeard'
 // 引入表单验证的js文件
 import './validate'
+// 引入Mock.js文件
+import './mock/mock-server.js'
 // 引入并注册使用按钮
 import { Button } from 'mint-ui';
 Vue.component(Button.name, Button);
