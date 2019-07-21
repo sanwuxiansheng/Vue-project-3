@@ -3,7 +3,7 @@
     <div class="goods">
       <div class="menu-wrapper">
         <ul ref="leftUl">
-          <li class="menu-item" :class="{current: currentIndex === index}" v-for="(good, index) in goods" :key="index">
+          <li class="menu-item" :class="{current: currentIndex === index}" v-for="(good, index) in goods" :key="index" @click="clickItem(index)">
             <img class="icon" :src="good.icon" v-if="good.icon">
             <span class="text bottom-border-1px">{{good.name}}</span>
           </li>
@@ -125,6 +125,12 @@ export default {
         tops.push(top);
       });
       this.tops = tops;
+    },
+    // 点击左侧的分类列表---右侧的li向上或者向下滑动到某个指定的位置(左侧的li就会被自动的选中)
+    clickItem (index) {
+      const scrollY = this.tops[index];
+      this.scrollY = scrollY;
+      this.rightScroll.scrollTo(0, -scrollY, 800)
     }
   }
 }
