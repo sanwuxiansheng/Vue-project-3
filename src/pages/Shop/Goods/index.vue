@@ -2,8 +2,8 @@
   <div>
     <div class="goods">
       <div class="menu-wrapper">
-        <ul>
-          <li class="menu-item" v-for="(good, index) in goods" :key="index">
+        <ul ref="leftUl">
+          <li class="menu-item" :class="{current: currentIndex === index}" v-for="(good, index) in goods" :key="index">
             <img class="icon" :src="good.icon" v-if="good.icon">
             <span class="text bottom-border-1px">{{good.name}}</span>
           </li>
@@ -38,22 +38,94 @@
         </ul>
       </div>
     </div>
+    <!-- <Food :food="food" ref="food" /> -->
   </div>
 </template>
 <script>
+// 引入Food组件
+import Food from './Food.vue'
 import {mapState} from 'vuex'
 // 引入滚动的插件
 import BScroll from "better-scroll";
 export default {
+  data () {
+    return {
+      scrollY: 0, // 纵向滚动的值
+      tops: [], // 存储每个选项高度的值的数组
+      // food:{}
+    }
+  },
   name: 'Goods',
   computed: {
     ...mapState({
       goods: state => state.shop.goods
-    })
+    }),
+    // 获取当前索引的值
+    currentIndex () {
+      const { scrollY, tops } = this;
+      const index = tops.findIndex(
+        (top, index) => scrollY >= top && scrollY < tops[index + 1]
+      );
+      // if (this.index !== index && this.leftScroll) {
+      //   //把当前右侧滑动的li对应的索引值保存起来
+      //   this.index = index;
+      //   // 获取索引值,让左侧的对应这个索引的li也滑动,滑动到对应的索引位置即可
+      //   const li = this.$refs.leftUl.children[index];
+      //   // 让当前的li去移动
+      //   this.leftScroll.scrollToElement(li,300)
+      // }
+      return index;
+    }
   },
   async mounted () {
     await this.$store.dispatch("getGoods");
     // console.log(this.goods);
+    // 初始化滚动
+    this._initScroll();
+    // 初始化tops数据---数组----所有li的高度的数据集合
+    this._initTops();
+  },
+  methods: {
+    _initScroll () {
+      // 左侧列表
+      this.leftScroll = new BScroll('.menu-wrapper', {
+        click: true // 表示允许进行点击事件
+      })
+      // 右侧列表
+      this.rightScroll = new BScroll('.foods-wrapper', {
+        click: true,
+        probeType: 1
+        /** 
+         * probeType:1,2,3
+         * 1:非实时,触摸
+         * 2:实时,触摸,
+         * 3:实时的,触摸,惯性,编码
+         * 实时的:时间间隔很短
+         * 非实时的:时间间隔很长
+        */
+      });
+      this.rightScroll.on('scroll', ({x, y}) => {
+        this.scrollY = Math.abs(y);
+        
+      }),
+      this.rightScroll.on('scrollEnd', ({x, y}) => {
+        this.scrollY = Math.abs(y)
+        // console.log(this.scrollY);
+      })
+    },
+    _initTops () {
+      // 装载数据--tops
+      const tops = [];
+      let top = 0;
+      tops.push(top);
+      // 获取右侧列表中li
+      const list = this.$refs.rightUl.children;
+      Array.prototype.slice.call(list).forEach(li => {
+        top += li.clientHeight;
+        tops.push(top);
+      });
+      this.tops = tops;
+    }
   }
 }
 </script>
