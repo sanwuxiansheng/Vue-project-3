@@ -66,14 +66,16 @@ export default {
       const index = tops.findIndex(
         (top, index) => scrollY >= top && scrollY < tops[index + 1]
       );
-      // if (this.index !== index && this.leftScroll) {
-      //   //把当前右侧滑动的li对应的索引值保存起来
-      //   this.index = index;
-      //   // 获取索引值,让左侧的对应这个索引的li也滑动,滑动到对应的索引位置即可
-      //   const li = this.$refs.leftUl.children[index];
-      //   // 让当前的li去移动
-      //   this.leftScroll.scrollToElement(li,300)
-      // }
+      // 这个判断有个坑，===坑就是this.leftScroll这个值必须存在时才能进行判断
+      // 判断左右侧的index值是否相等，不相等说明右侧进行滑动了则需要左侧也滑动到对应位置
+      if (this.index !== index && this.leftScroll) {
+        //把当前右侧滑动的li对应的索引值保存起来
+        this.index = index;
+        // 获取索引值,让左侧的对应这个索引的li也滑动,滑动到对应的索引位置即可
+        const li = this.$refs.leftUl.children[index];
+        // 让当前的li去移动
+        this.leftScroll.scrollToElement(li,500)
+      }
       return index;
     }
   },
