@@ -21,3 +21,6 @@ export const RECEIVE_RATINGS = 'receive_ratings'
 // food的加和减操作
 export const ADD_FOOD_COUNT = 'add_food_count'
 export const REDUCE_FOOD_COUNT = 'reduce_food_count'
+
+// 购物车的操作
+export const CLEAR_CART = 'clear_cart' // 清空购物车

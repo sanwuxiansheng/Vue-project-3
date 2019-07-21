@@ -38,6 +38,7 @@
           </li>
         </ul>
       </div>
+      <ShopCart />
     </div>
     <Food :food="food" ref="food" />
   </div>
@@ -48,9 +49,12 @@ import Food from './Food.vue'
 import {mapState} from 'vuex'
 // 引入滚动的插件
 import BScroll from "better-scroll";
+// 引入购物车组件
+import ShopCart from './ShopCart'
 export default {
   components: {
-    Food
+    Food,
+    ShopCart
   },
   data () {
     return {
