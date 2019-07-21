@@ -14,7 +14,7 @@
           <li class="food-list-hook" v-for="(good, index) in goods" :key="index">
             <h1 class="title">{{good.name}}</h1>
             <ul>
-              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index">
+              <li class="food-item bottom-border-1px" v-for="(food, index) in good.foods" :key="index" @click="isShowFood(food)">
                 <div class="icon">
                   <img width="57" height="57"
                     :src="food.icon" />
@@ -27,6 +27,7 @@
                     <span>好评率{{food.rating}}%</span></div>
                   <div class="price">
                     <span class="now">￥{{food.price}}</span>
+                    <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
                   <div class="cartcontrol-wrapper">
                     <CartControl :food="food" />
@@ -38,7 +39,7 @@
         </ul>
       </div>
     </div>
-    <!-- <Food :food="food" ref="food" /> -->
+    <Food :food="food" ref="food" />
   </div>
 </template>
 <script>
@@ -48,11 +49,14 @@ import {mapState} from 'vuex'
 // 引入滚动的插件
 import BScroll from "better-scroll";
 export default {
+  components: {
+    Food
+  },
   data () {
     return {
       scrollY: 0, // 纵向滚动的值
       tops: [], // 存储每个选项高度的值的数组
-      // food:{}
+      food:{}
     }
   },
   name: 'Goods',
@@ -133,6 +137,12 @@ export default {
       const scrollY = this.tops[index];
       this.scrollY = scrollY;
       this.rightScroll.scrollTo(0, -scrollY, 800)
+    },
+    // 点击是否显示food组件
+    isShowFood (food) {
+      // 更新food对象数据
+      this.food = food
+      this.$refs.food.toggleShow()
     }
   }
 }
