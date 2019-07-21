@@ -11,6 +11,7 @@ import store from './store'
 // 引入创建的全局公共组件
 import Star from './components/Star/index.vue'
 import ShopHeard from './components/ShopHeard'
+import CartControl from './components/CartControl/index.vue'
 // 引入表单验证的js文件
 import './validate'
 // 引入Mock.js文件
@@ -22,6 +23,7 @@ Vue.component(Button.name, Button);
 Vue.component('Header', Header)
 Vue.component('Star', Star)
 Vue.component('ShopHeard', ShopHeard)
+Vue.component('CartControl', CartControl)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
