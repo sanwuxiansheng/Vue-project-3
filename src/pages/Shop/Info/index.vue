@@ -102,19 +102,35 @@
 
 
         // 给ul动态指定样式宽度
-        const ul = this.$refs.picsUl
-        const liWidth = 120
-        const space = 6
-        const size = this.info.pics.length
-        if (ul) {
-          ul.style.width = (liWidth + space) * size - space + 'px'
+        if (this.$refs.ul) {
+          const ul = this.$refs.ul
+          const liWidth = 120
+          const space = 6
+          const size = this.info.pics.length
+          if (ul) {
+            ul.style.width = (liWidth + space) * size - space + 'px'
+          }
+          // console.log(ul);
         }
-
+        
         // 用于水平滑动
         // new BScroll(this.$refs.picsDIV, {
         //   click: true,
         //   scrollX: true, // 水平滑动
         // })
+        // new BScroll('.pic-item', {
+        //   click: true,
+        //   scrollX: true
+        // })
+        if (!this.picScroll) {
+          this.picScroll = new BScroll(this.$refs.pics, {
+            click: true,
+            scrollX: true, // 水平滑动
+            eventPassthrough: 'vertical' //忽略竖直方向的滚动
+          })
+        } else {
+          this.picScroll.refresh();
+        }
       }
     },
 
