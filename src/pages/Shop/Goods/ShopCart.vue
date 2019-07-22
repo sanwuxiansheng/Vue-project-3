@@ -44,6 +44,8 @@
 <script>
   // 引入滚动所需插件
   import BScroll from 'better-scroll'
+  // 引入mint.ui
+  import { MessageBox } from 'mint-ui';
   // 引入vuex仓库中的数据
   import { mapState, mapGetters } from 'vuex'
   export default {
@@ -118,9 +120,12 @@
       },
 
       clear () {
-        if(window.confirm('确定要清空购物车吗?')) {
+        // if(window.confirm('确定要清空购物车吗?')) {
+        //   this.$store.dispatch('clearCart')
+        // }
+        MessageBox.confirm('确定要清空购物车吗?').then(action => {
           this.$store.dispatch('clearCart')
-        }
+        })
       }
     }
   }
