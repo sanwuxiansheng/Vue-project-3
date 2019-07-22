@@ -21,3 +21,5 @@ export const reqLoginOut = () => ajax(BASE + `/logout`)
 export const reqGoods = () => ajax('/goods')
 export const reqInfo = () => ajax('/info')
 export const reqRatings = () => ajax('/ratings')
+// 获取商家商品数组
+export const reqShopRatings = () => ajax('/shop_ratings')

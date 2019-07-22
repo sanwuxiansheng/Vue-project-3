@@ -42,16 +42,18 @@
   </div>
 </template>
 <script>
+  // 引入滚动所需插件
   import BScroll from 'better-scroll'
+  // 引入vuex仓库中的数据
   import { mapState, mapGetters } from 'vuex'
   export default {
-
+    // 定义当前组件中的数据
     data () {
       return {
         isShow: false
       }
     },
-
+    // computed：计算属性，当页面改变数据也要发生改变或者是数据发生改变页面也发生改变就需要用到计算属性
     computed: {
       ...mapState({
         cartFood: state => state.shop.cartFood, // 获取的是食物数组(购物车中)
