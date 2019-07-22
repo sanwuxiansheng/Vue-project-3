@@ -66,6 +66,7 @@
     </div>
   </div>
 </template>
+
 <script>
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
@@ -110,12 +111,11 @@
         }
 
         // 用于水平滑动
-        new BScroll(this.$refs.picsDiv, {
-          click: true,
-          scrollX: true, // 水平滑动
-        })
-      },
-      name: 'Info'
+        // new BScroll(this.$refs.picsDIV, {
+        //   click: true,
+        //   scrollX: true, // 水平滑动
+        // })
+      }
     },
 
     watch: {
